@@ -7,8 +7,7 @@ Factory Pattern is one of the Creational Design pattern and it’s widely used i
 Factory design pattern is used when we have a super class with multiple sub-classes and based on input, we need to return one of the sub-class. This pattern take out the responsibility of instantiation of a class from client program to the factory class.
 
 
-#Factory Class
- Here is the basic implementation of Factory Class.
+#Factory Class: Here is the basic implementation of Factory Class.
 
  public class CarFactory {
     public static Car getCar(Cars type) {
@@ -19,17 +18,30 @@ Factory design pattern is used when we have a super class with multiple sub-clas
             return new AltoCar();
         } else if (type == CarsConst.swift)
             return new SwiftCar();
-        else if (type == CarsConst.creta) {
-            return new CretaCar();
-        } else if (type == CarsConst.limo) {
-            return new Limozen();
-        } else if (type == CarsConst.honda) {
-            return new HondaCity();
-        } else if (type == Toy.alto) {
-            return new AltoToy();
-        } else if (type == WoodenCars.alto) {
-            return new AltoWooden();
-        }
+      
         return null;
     }
 }
+
+ enum CarsConst implements Cars {
+        maruti800("Maruti 800"),
+        alto("Alto"),
+        swift("Swift"),
+        creta("Creta"),
+        limo("Limozen"),
+        honda("Honda");
+        private final String text;
+
+        CarsConst(String s) {
+            this.text = s;
+        }
+
+        @Override
+        public String toString() {
+            return text;
+        }
+    }
+    
+    interface Cars {
+        public String toString();
+    }
