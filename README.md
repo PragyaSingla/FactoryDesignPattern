@@ -12,38 +12,15 @@ Factory Pattern is Creational Design pattern.Itis used when we have a parent cla
 #Factory Class: Here is the basic implementation of Factory Class.
 
  public class CarFactory {
-    public static Car getCar(Cars type) {
-
-        if (type == CarsConst.maruti800) {
+ 
+    public static Car getCar(Cars type) { 
+       if (type == CarsConst.maruti800) {
             return new MarutiCar();
         } else if (type == CarsConst.alto) {
             return new AltoCar();
-        } else if (type == CarsConst.swift)
+        } else if (type == CarsConst.swift){
             return new SwiftCar();
-      
+        }
         return null;
     }
 }
-
-enum CarsConst implements Cars {
-        maruti800("Maruti 800"),
-        alto("Alto"),
-        swift("Swift"),
-        creta("Creta"),
-        limo("Limozen"),
-        honda("Honda");
-        private final String text;
-
-        CarsConst(String s) {
-            this.text = s;
-        }
-
-        @Override
-        public String toString() {
-            return text;
-        }
-    }
-    
-    interface Cars {
-        public String toString();
-    }
